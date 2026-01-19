@@ -12,6 +12,7 @@ symbols = ["AAPL", "GOOG", "TSLA", "MSFT", "PEP"]
 results = []
 
 
+# Normal async request simulation using requests library
 def run_tasks():
     for symbol in symbols:
         response = requests.get(url.format(symbol, api_key))

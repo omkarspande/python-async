@@ -22,10 +22,16 @@ def get_tasks(session):
     return tasks
 
 
+"""
+Here we are making use of the tasks to run the api calls asynchronously
+all at once. 
+"""
+
+
 async def run_tasks():
     async with aiohttp.ClientSession() as session:
         tasks = get_tasks(session)
-        responses = await asyncio.gather(*tasks)
+        responses = await asyncio.gather(*tasks)  # Waits for the tasks to complete
         for response in responses:
             results.append(await response.json())
 

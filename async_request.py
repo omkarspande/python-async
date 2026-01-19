@@ -21,6 +21,13 @@ async def run_tasks():
             results.append(await response.json())
 
 
+"""
+Here the code seems to be working like async await but actually the for loop
+is making the api calls sequentially one after another.
+To make it truly asynchronous we need to create tasks for each api call which
+will the perform the calls all at once.
+"""
+
 start = time.time()
 asyncio.run(run_tasks())
 end = time.time()
